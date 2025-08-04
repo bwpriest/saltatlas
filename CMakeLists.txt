@@ -136,17 +136,6 @@ if (SALTATLAS_USE_HNSWLIB)
 endif ()
 
 #
-# Cereal
-#
-set(JUST_INSTALL_CEREAL TRUE)
-FetchContent_Declare(
-    cereal
-    GIT_REPOSITORY https://github.com/USCiLab/cereal.git
-    GIT_TAG v1.3.2
-)
-FetchContent_MakeAvailable(cereal)
-
-#
 # YGM
 #
 set(JUST_INSTALL_YGM TRUE)
@@ -168,7 +157,7 @@ target_include_directories(
                         $<INSTALL_INTERFACE:include>
 )
 target_link_libraries(
-    saltatlas INTERFACE ${SALTATLAS_CEREAL_TARGET} ygm::ygm ${BOOST_LIBS}
+    saltatlas INTERFACE ygm::ygm ${BOOST_LIBS}
 )
 if (SALTATLAS_USE_HNSWLIB)
     target_link_libraries(saltatlas INTERFACE hnswlib::hnswlib)
